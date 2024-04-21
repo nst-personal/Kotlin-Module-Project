@@ -35,7 +35,7 @@ class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
                 }
                 println("Wrong selected element")
             } else {
-                val item = entities.getOrNull(potentialValue);
+                val item = entities.getOrNull((potentialValue - 1));
                 if (item == null) {
                     println("Wrong selected element")
                 } else {
