@@ -1,14 +1,16 @@
-package pages.screen
+package pages.screen.main
 
-import pages.ExitPage
-import pages.Page
+import pages.common.ExitPage
+import pages.common.Page
+import pages.common.Screen
+import pages.screen.archive.ArchiveMainScreen
 import java.util.Scanner
 
 class MainScreen(index: Int, name: String) : Screen(index, name) {
     private var currentPage: Page? = null
     init {
-        pages = arrayListOf(
-            ArchiveMainScreen(0, "Archive"),
+        menuPages = arrayListOf(
+            ArchiveMainScreen(0, "Archive page"),
             ExitPage(1, "Exit")
         )
     }
@@ -36,18 +38,5 @@ class MainScreen(index: Int, name: String) : Screen(index, name) {
                 }
             }
         }
-    }
-
-
-    private fun showPagesOption() {
-        println("Select item from menu")
-        println(name)
-        pages.forEach { page ->
-            println("${page.index} ${page.name}")
-        }
-    }
-
-    private fun getPage(index: Int) : Page? {
-        return pages.find { page -> page.index == index }
     }
 }

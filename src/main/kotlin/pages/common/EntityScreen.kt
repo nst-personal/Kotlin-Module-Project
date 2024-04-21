@@ -1,32 +1,30 @@
-package pages.screen
+package pages.common
 
 import enitities.Archive
-import pages.ArchivePage
-import pages.ExitPage
-import pages.Page
+import enitities.Entity
 import java.util.Scanner
 
-class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
-
-    init {
-        pages = arrayListOf(
-            ArchivePage(0, "Create Archive"),
-            ArchivePage(1, "Show Archive"),
-            ExitPage(2, "Exit")
-        )
+abstract class EntityScreen(index: Int, name: String) : Screen(index, name) {
+    protected var entities: ArrayList<Entity> = arrayListOf()
+    protected var currentPage: Page? = null
+    protected var previousPage: Page? = null
+    protected open fun get() {
+        println("$name ===> Items:")
+        if (entities.isEmpty()) {
+            println("No elements")
+        } else {
+            entities.forEachIndexed { index, item ->
+                println("${index + 1}. ${item.name}")
+            }
+        }
     }
-
-
-    private var currentPage: Page? = null
-    private var previousPage: Page? = null
-
-    override fun add() {
+    protected fun add() {
         val scanner = Scanner(System.`in`)
         while (true) {
-            println("Fill name")
+            println("$name ===> Fill name")
             val name = scanner.nextLine()
             if (name == null || name.trim().isEmpty()) {
-                println("Archive should have name")
+                println("Name is not provided")
             } else {
                 entities.add(Archive(name))
                 break
@@ -52,14 +50,11 @@ class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
                     when(currentPage?.index) {
                         0 -> {
                             add()
-                            break
                         }
                         1 -> {
                             get()
-                            break
                         }
                         2 -> {
-                            println("Bye")
                             break;
                         }
                     }
@@ -67,7 +62,5 @@ class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
             }
         }
     }
-    private fun getPage(index: Int) : Page? {
-        return pages.find { page -> page.index == index }
-    }
+
 }
