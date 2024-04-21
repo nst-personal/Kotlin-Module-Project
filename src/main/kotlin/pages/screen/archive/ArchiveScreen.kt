@@ -13,4 +13,17 @@ class ArchiveScreen(index: Int, name: String) : NavigationScreen(index, name) {
         )
     }
 
+    override fun action(): Boolean {
+        if (this.currentPage == null) {
+            println("Wrong selected element")
+        } else {
+            if (this.currentPage is ExitPage) {
+                return true
+            } else {
+                (this.currentPage as NoteMainScreen).show()
+            }
+        }
+        return false
+    }
+
 }

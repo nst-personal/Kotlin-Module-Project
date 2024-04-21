@@ -5,12 +5,9 @@ import pages.common.Page
 import pages.common.Screen
 import java.util.Scanner
 
-open class NavigationScreen(index: Int, name: String) : Screen(index, name) {
+abstract class NavigationScreen(index: Int, name: String) : Screen(index, name) {
     protected var currentPage: Page? = null
-    protected var previousPage: Page? = null
-    open fun action() : Boolean {
-        return false
-    }
+    abstract fun action() : Boolean
     open fun show() {
         val scanner = Scanner(System.`in`)
         while (true) {
@@ -25,7 +22,6 @@ open class NavigationScreen(index: Int, name: String) : Screen(index, name) {
                     println("Wrong selected element")
                 } else {
                     if (potentialPage is ExitPage) {
-                        println("Bye")
                         break
                     } else {
                         currentPage = potentialPage;

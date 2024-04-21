@@ -35,17 +35,17 @@ abstract class EntityScreen(index: Int, name: String) : NavigationScreen(index, 
         when(currentPage?.index) {
             0 -> {
                 add()
-                return true
+                return false
             }
             1 -> {
                 get()
-                return true
-            }
-            2 -> {
                 return false
             }
+            2 -> {
+                return true
+            }
         }
-        return false
+        return true
     }
 
 }
