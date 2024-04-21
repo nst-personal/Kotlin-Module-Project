@@ -8,7 +8,7 @@ class NoteMainScreen(index: Int, name: String) : EntityScreen(index, name) {
     init {
         menuPages = arrayListOf(
             NotePageMenu(0, "Create Note"),
-            NotePageMenu(1, "Show Note"),
+            NotePageMenu(1, "Show Note", NoteScreen(0, "Note")),
             ExitPage(2, "Exit")
         )
     }

@@ -1,7 +1,7 @@
 package pages.screen.notes
 
-import pages.common.Screen
+import pages.NavigationScreen
 
-class NoteScreen(index: Int, name: String) : Screen(index, name) {
+class NoteScreen(index: Int, name: String) : NavigationScreen(index, name) {
 
 }
