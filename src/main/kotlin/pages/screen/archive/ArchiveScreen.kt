@@ -3,12 +3,13 @@ package pages.screen.archive
 import pages.NavigationScreen
 import pages.common.ExitPage
 import pages.screen.notes.NoteMainScreen
+import pages.screen.notes.NotePageMenu
 
 class ArchiveScreen(index: Int, name: String) : NavigationScreen(index, name) {
 
     init {
         menuPages = arrayListOf(
-            NoteMainScreen(0, "Note Page", ),
+            NotePageMenu(0, "Note Page", NoteMainScreen(0, "Notes")),
             ExitPage(1, "Exit")
         )
     }
@@ -17,7 +18,7 @@ class ArchiveScreen(index: Int, name: String) : NavigationScreen(index, name) {
         if (this.currentPage is ExitPage) {
             return true
         }
-        (this.currentPage as NoteMainScreen).show()
+        this.currentPage?.screen?.show()
         return false
     }
 

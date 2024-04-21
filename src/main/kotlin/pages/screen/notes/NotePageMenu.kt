@@ -1,9 +1,9 @@
-package pages.screen.archive
+package pages.screen.notes
 
 import pages.NavigationScreen
-import pages.common.Page
+import pages.common.EntityScreen
 
-class ArchiveMenuPage(index: Int, name: String) : Page(index, name) {
+class NotePageMenu(index: Int, name: String) : EntityScreen(index, name) {
     constructor(index: Int, name: String, screen: NavigationScreen) : this(index, name) {
         this.screen = screen
     }
