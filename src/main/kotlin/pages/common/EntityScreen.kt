@@ -20,11 +20,14 @@ abstract class EntityScreen(index: Int, name: String) : NavigationScreen(index, 
     private fun add() {
         val scanner = Scanner(System.`in`)
         while (true) {
-            println("$name ===> Fill name")
+            println("$name ===> Fill name (fill exit for not saving)")
             val name = scanner.nextLine()
             if (name == null || name.trim().isEmpty()) {
                 println("Name is not provided")
             } else {
+                if (name.lowercase().equals("exit")) {
+                    break
+                }
                 entities.add(Archive(name))
                 break
             }

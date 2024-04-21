@@ -1,5 +1,7 @@
 package pages.common
 
-abstract class Page(val index: Int, val name: String) {
+import pages.NavigationScreen
 
+abstract class Page(var index: Int, var name: String) {
+    var screen: NavigationScreen? = null
 }

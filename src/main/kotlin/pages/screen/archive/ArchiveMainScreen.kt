@@ -6,19 +6,17 @@ import pages.common.EntityScreen
 class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
 
     init {
-        val archiveScreen = ArchiveScreen(0, "Note")
         menuPages = arrayListOf(
-            ArchiveMenuPage(0, "Create Archive", null),
-            ArchiveMenuPage(1, "Show Archive", archiveScreen),
+            ArchiveMenuPage(0, "Create Archive"),
+            ArchiveMenuPage(1, "Show Archive", ArchiveScreen(0, "Note")),
             ExitPage(2, "Exit")
         )
     }
 
     override fun get() {
         super.get()
-        if (!entities.isEmpty()) {
-            (currentPage as ArchiveMenuPage).subScreen?.show()
-        }
+        if (entities.isNotEmpty())
+            currentPage?.screen?.show()
     }
 
 }
