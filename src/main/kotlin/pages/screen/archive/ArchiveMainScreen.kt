@@ -16,7 +16,6 @@ class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
 
     override fun get() {
         if (entities.isNotEmpty()) {
-            super.get()
             getNotes()
         } else {
             super.get()
@@ -26,6 +25,7 @@ class ArchiveMainScreen(index: Int, name: String) : EntityScreen(index, name) {
     private fun getNotes() {
         val scanner = Scanner(System.`in`)
         while (true) {
+            super.get()
             println("Select item for view (fill exit to back)")
             val valueData = scanner.nextLine()
             val potentialValue = valueData.toIntOrNull();

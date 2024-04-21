@@ -13,13 +13,4 @@ class ArchiveScreen(index: Int, name: String) : NavigationScreen(index, name) {
             ExitPage(1, "Exit")
         )
     }
-
-    override fun action(): Boolean {
-        if (this.currentPage is ExitPage) {
-            return true
-        }
-        this.currentPage?.screen?.show()
-        return false
-    }
-
 }
