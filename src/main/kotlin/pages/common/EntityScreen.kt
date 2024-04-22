@@ -13,22 +13,21 @@ abstract class EntityScreen(index: Int, name: String) : NavigationScreen(index, 
             println("No elements")
         } else {
             entities.forEachIndexed { index, item ->
-                println("${index + 1}. ${item.name}")
+                println("${index + 1}. ${item.details()}")
             }
         }
     }
-    private fun add() {
+    abstract fun add()
+
+    protected fun addField(fieldName: String, callback: (String) -> Unit) {
         val scanner = Scanner(System.`in`)
         while (true) {
-            println("$name ===> Fill name (fill exit for not saving)")
+            println("$name ===> Fill $fieldName")
             val name = scanner.nextLine()
             if (name == null || name.trim().isEmpty()) {
-                println("Name is not provided")
+                println("$fieldName is not provided")
             } else {
-                if (name.lowercase().equals("exit")) {
-                    break
-                }
-                entities.add(Archive(name))
+                callback(name)
                 break
             }
         }
