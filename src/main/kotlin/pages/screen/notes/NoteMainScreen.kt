@@ -1,10 +1,15 @@
 package pages.screen.notes
 
+import enitities.Entity
 import enitities.Note
 import pages.common.EntityScreen
 import pages.common.ExitPage
 
-class NoteMainScreen(index: Int, name: String) : EntityScreen(index, name) {
+class NoteMainScreen(index: Int, name: String, private var screenEntities: ArrayList<Entity>) : EntityScreen(index, name) {
+
+    init {
+        super.entities = this.screenEntities
+    }
 
     override fun add() {
         var name: String? = null
