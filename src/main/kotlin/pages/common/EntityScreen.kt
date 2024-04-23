@@ -3,6 +3,7 @@ package pages.common
 import enitities.Archive
 import enitities.Entity
 import pages.NavigationScreen
+import pages.screen.archive.ArchiveScreen
 import java.util.Scanner
 
 abstract class EntityScreen(index: Int, name: String) : NavigationScreen(index, name) {
@@ -48,6 +49,18 @@ abstract class EntityScreen(index: Int, name: String) : NavigationScreen(index, 
             }
         }
         return true
+    }
+
+    protected fun getExitNumber() : Int {
+        return entities.size + 1
+    }
+
+    protected fun displayExit() {
+        println("${getExitNumber()}. Exit")
+    }
+
+    protected open fun getNoteScreenBasedOnMenuItem(index: Int, item: Entity) : NavigationScreen? {
+        return null
     }
 
 }

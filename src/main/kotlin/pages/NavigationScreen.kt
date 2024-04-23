@@ -14,9 +14,15 @@ abstract class NavigationScreen(index: Int, name: String) : Screen(index, name) 
         this.currentPage?.screen?.show()
         return false
     }
+
+    protected open fun showDetails() {
+
+    }
+
     open fun show() {
         val scanner = Scanner(System.`in`)
         while (true) {
+            showDetails()
             showPagesOption()
             val valueData = scanner.nextLine()
             val potentialValue = valueData.toIntOrNull();
