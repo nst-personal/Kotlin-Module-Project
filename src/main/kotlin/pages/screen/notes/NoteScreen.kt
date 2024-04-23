@@ -14,7 +14,7 @@ class NoteScreen(index: Int, name: String, private var item: Entity) : Navigatio
 
     override fun showDetails() {
         println("=================")
-        println("${item.details()}")
+        println(item.details())
         println("=================")
     }
 
